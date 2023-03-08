@@ -1,0 +1,216 @@
+:root {
+    --background-rgb: 29 30 34;
+    --green-rgb: 33 150 51;
+    --primary-rgb: var(--green-rgb);
+}
+
+body {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: rgb(var(--background-rgb));
+    margin: 0rem;
+}
+
+.banner {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.card-banner {
+    color: white;
+    font-size: 7.25rem;
+    font-weight: 600;
+}
+
+.screens {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 20px;
+    row-gap: 15px;
+    grid-template-areas: "header info info info";
+}
+
+@media only screen and (max-width: 1350px)  {
+    .screens {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas: "header info info";
+    }
+}
+
+@media only screen and (max-width: 1000px)  {
+    .screens {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: "header info";
+    }
+
+    .card-banner {
+        font-size: 6.25rem;
+        font-weight: 600;
+    }
+}
+
+@media only screen and (max-width: 800px)  {
+    .card-banner {
+        font-size: 5.25rem;
+        font-weight: 600;
+    }
+}
+
+@media only screen and (max-width: 760px)  {
+    .screens {
+        display: block;
+    }
+
+    .screen {
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (max-width: 660px)  {
+    .card-banner {
+        font-size: 3.50rem;
+        font-weight: 600;
+    }
+}
+
+.screen {
+    justify-self: center;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+    width: 300px;
+    border: 3px solid rgb(var(--primary-rgb) / 80%);
+    aspect-ratio: 10 / 16;
+    border-radius: 1rem;
+    background-color: rgb(var(--primary-rgb) / 15%);
+    transition: width .3s;
+}
+
+#infoBar {
+    grid-area: info;
+    display: none;
+    color: white;
+    font-size: 3.25rem;
+}
+
+#activeSpot {
+    grid-area: header;
+}
+
+.screen:hover {
+    width: 320px;
+    transition: width .3s;
+}
+
+.screen-text {
+    position: absolute;
+    z-index: 3;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 4.25rem;
+    align-items: center;
+}
+
+.screen-text .name {
+    font-weight: 400;
+    color: white;
+}
+
+.screen:hover .screen-text .name {
+    font-size: 5.25rem;
+    transition: font-size .3s;
+}
+
+.screen > .screen3 {
+    background-image: url("img/screen3.png");
+}
+
+.screen > .screen4 {
+    background-image: url("img/screen4.jpg");
+}
+
+.screen > .screen2 {
+    background-image: url("img/screen2.png");
+}
+
+.screen > .screen1 {
+    background-image: url("img/screen1.jpg");
+}
+
+.screen > .screen4,
+.screen > .screen3,
+.screen > .screen2,
+.screen > .screen1 {
+    background-position: 0% 0%;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-size: 150%;
+    filter: sepia(10%) hue-rotate(120deg);
+    animation: pan-image 20s infinite linear;
+    opacity: 0.6;
+    z-index: 1;
+}
+
+.screen-overlay {
+    position: absolute;
+    z-index: 2;
+    left: 0%;
+    top: 0%;
+    background: linear-gradient(
+    rgb(var(--primary-rgb) / 0.15),
+    rgb(var(--primary-rgb) / 0.15) 3px,
+    transparent 3px,
+    transparent 9px
+  );
+  background-size: 100% 9px;
+  height: 100%;
+  width: 100%;
+  animation: pan-overlay 22s infinite linear;
+}
+
+@keyframes pan-overlay {
+    from {
+        background-position: 0% 0%;
+    }
+
+    to {
+        background-position: 0% -100%;
+    }
+}
+
+@keyframes pan-image {
+
+    0% {
+        background-position: 0% 0%;
+        background-size: 150%;
+        filter: sepia(10%) hue-rotate(0deg);
+    }
+
+    25% {
+        background-position: 100% 20%;
+        background-size: 140%;
+    }
+
+    50% {
+        background-position: 0% 100%;
+        background-size: 145%;
+        filter: sepia(10%) hue-rotate(180deg);
+    }
+
+    75% {
+        background-position: 100% 100%;
+        background-size: 142%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+        background-size: 150%;
+        filter: sepia(10%) hue-rotate(360deg);
+    }
+}
