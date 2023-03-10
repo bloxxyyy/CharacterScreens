@@ -6,9 +6,34 @@ const createTile = index => {
     return tile;
 }
   
-const createTiles = quantity => {
-    Array.from(Array(quantity)).map((tile, index) => {
-        wrapper.appendChild(createTile(index));
+const createNav1 = tile => {
+    tile.classList.add("tile");
+    tile.classList.add("characterCardNav");
+    return tile;
+}
+
+const createNav2 = tile => {
+    tile.classList.add("tile");
+    tile.classList.add("itemsCardNav");
+    return tile;
+}
+
+const createTiles = (col, row) => {
+    Array.from(Array(col * row)).map((tile, index) => {
+
+        var t = createTile(index);
+        if ((index) % col === 0 && Math.floor(index / col) === 3) {
+            t = createNav1(t)
+        }
+
+        if ((index) % col === 0 && Math.floor(index / col) === 4) {
+            t = createNav2(t)
+        }
+
+        
+
+
+        wrapper.appendChild(t);
     });
 }
   
@@ -21,12 +46,19 @@ const createGrid = () => {
     columns = Math.floor(document.body.clientWidth / size);
     rows = Math.floor(height / size);
     
+    /* Size of a tile width */
+    var tileWidth = document.body.clientWidth / columns;
+    const nav = document.getElementsByClassName("nav")[0];
+    nav.style.width = tileWidth + "px";
+
+
+
     wrapper.style.height = height + "px";
 
     wrapper.style.setProperty("--columns", columns);
     wrapper.style.setProperty("--rows", rows);
     
-    createTiles(columns * rows);
+    createTiles(columns, rows);
 }
 
 createGrid();

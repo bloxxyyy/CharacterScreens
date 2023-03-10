@@ -20,7 +20,7 @@
 body {   
     min-height: 100vh;
     display: grid;
-    place-items: center;
+    align-items: center;
     background-size: 200% !important;
     overflow-x: hidden;
     margin: 0;
@@ -47,7 +47,7 @@ body {
 .tile {
     background-color: rgb(15, 15, 15);
     position: relative;
-    margin: 0.5px;
+    margin: 0.8px;
 }
 
 .banner {
@@ -71,6 +71,53 @@ body {
     height: auto;
 }
 
+.characterCardNav {
+    background-image: url("HandDrawnIcons/Realistic/variants/Document1_2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 170%;
+    backface-visibility: 90%;
+    transform: scale(1);
+    z-index: 2;
+    transition: all .2s ease-in-out;
+}
+
+.itemsCardNav {
+    background-image: url("HandDrawnIcons/Realistic/stuff/Axe1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 100%;
+    backface-visibility: 90%;
+    transform: scale(1);
+    z-index: 2;
+    transition: all .2s ease-in-out;
+}
+
+.itemsCardNav:hover {
+    cursor:pointer;
+    transform: scale(.9);
+    background-size: 80%;
+}
+
+.characterCardNav:hover {
+    cursor:pointer;
+    transform: scale(.9);
+    background-size: 150%;
+}
+
+.page-container {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav {
+    height: 2rem;
+    padding: 1rem;
+}
+
 .screens {
     padding: 2rem;
     background-color: rgb(var(--background-rgb)  / 95%);
@@ -79,50 +126,6 @@ body {
     column-gap: 20px;
     row-gap: 15px;
     grid-template-areas: "header info info info";
-}
-
-@media only screen and (max-width: 1350px)  {
-    .screens {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-areas: "header info info";
-    }
-}
-
-@media only screen and (max-width: 1000px)  {
-    .screens {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-areas: "header info";
-    }
-
-    .card-banner {
-        font-size: 6.25rem;
-        font-weight: 600;
-    }
-}
-
-@media only screen and (max-width: 800px)  {
-    .card-banner {
-        font-size: 5.25rem;
-        font-weight: 600;
-    }
-}
-
-@media only screen and (max-width: 760px)  {
-    .screens {
-        display: block;
-    }
-
-    .screen {
-        margin-bottom: 20px;
-        margin: 0px auto 1rem auto;
-    }
-}
-
-@media only screen and (max-width: 660px)  {
-    .card-banner {
-        font-size: 3.25rem;
-        font-weight: 600;
-    }
 }
 
 .screen {
@@ -135,7 +138,7 @@ body {
     aspect-ratio: 10 / 16;
     border-radius: 1rem;
     background-color: rgb(var(--primary-rgb) / 15%);
-    transition: aspect-ratio .3s;
+    transition: all .2s ease-in-out;
 }
 
 #infoBar {
@@ -150,8 +153,7 @@ body {
 }
 
 .screen:hover {
-    aspect-ratio: 10 / 17;
-    transition: aspect-ratio .3s;
+    transform: scale(.95);
 }
 
 .screen-text {
@@ -167,11 +169,12 @@ body {
 .screen-text .name {
     font-weight: 400;
     color: white;
+    transition: all .2s ease-in-out;
 }
 
 .screen:hover .screen-text .name {
-    font-size: 5.25rem;
-    transition: font-size .3s;
+    font-size: 4rem;
+    
 }
 
 .screen > .screen3 {
@@ -262,5 +265,80 @@ body {
         background-position: 0% 0%;
         background-size: 170%;
         filter: sepia(10%) hue-rotate(360deg);
+    }
+}
+
+@media only screen and (max-width: 1500px)  {
+    .screens {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas: "header info info";
+    }
+}
+
+@media only screen and (max-width: 1180px)  {
+    .screens {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: "header info";
+    }
+
+    .card-banner {
+        font-size: 6.25rem;
+        font-weight: 600;
+    }
+}
+
+@media only screen and (max-width: 1000px)  {
+    .card-banner {
+        font-size: 5.00rem;
+        font-weight: 600;
+    }
+}
+
+@media only screen and (max-width: 860px)  {
+    .screens {
+        display: block;
+    }
+
+    .screen {
+        margin-bottom: 20px;
+        margin: 0px auto 1rem auto;
+    }
+}
+
+@media only screen and (max-width: 760px)  {
+    .card-banner {
+        font-size: 2.25rem;
+        font-weight: 600;
+    }
+}
+
+@media only screen and (max-width: 600px)  {
+    .nav {
+        padding: .2rem;
+    }
+}
+
+div.clickEffect{
+    position:fixed;
+    box-sizing:border-box;
+    border-style:solid;
+    border-color:#136131;
+    border-radius:50%;
+    animation:clickEffect 0.4s ease-out;
+    z-index:99999;
+}
+
+@keyframes clickEffect{
+    0% {
+        opacity:1;
+        width:0.5em; height:0.5em;
+        margin:-0.25em;
+        border-width:0.5em;
+    }
+    100% {
+        opacity:0.2;
+        width:15em; height:15em;
+        margin:-7.5em;
+        border-width:0.03em;
     }
 }
