@@ -5,22 +5,29 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
-        <script src="effects.js"></script>
+        <script defer src="cards.js"></script>
+        <script defer src="underlay.js"></script>
     </head>
     <body>
 
-        <div class="banner">
-            <span class="card-banner"> Character Cards</span>
+        <div class="underlay">
+
         </div>
 
-        <div class="screens" id="characterScreens">
-            <div id="infoBar">
-                <label>Name:</span>
-                <span class="name" id="NameField"></span>
-                <br>
-                <label>Age:</span>
-                <span class="name" id="AgeField"></span>
+        <div class="character-banner-container">
+            <div class="banner">
+                <span class="card-banner"> Character Cards</span>
             </div>
-        </div>     
+
+            <div class="screens" id="characterScreens">
+                <div id="infoBar">
+                    <label>Name:</span>
+                    <span class="name" id="NameField"></span>
+                    <br>
+                    <label>Age:</span>
+                    <span class="name" id="AgeField"></span>
+                </div>
+            </div>     
+        </div>
     </body>
 </html>

@@ -2,20 +2,61 @@
     --background-rgb: 29 30 34;
     --green-rgb: 33 150 51;
     --primary-rgb: var(--green-rgb);
+
+    --g1: rgb(120, 255, 160);
+    --g2: rgb(15 100 25);
 }
 
-body {
-    height: 100vh;
+@keyframes background-pan {
+    from {
+      background-position: 0% center;
+    }
+    
+    to {
+      background-position: -200% center;
+    }
+  }
+
+body {   
+    min-height: 100vh;
     display: grid;
     place-items: center;
-    background-color: rgb(var(--background-rgb));
-    margin: 0rem;
+    background-size: 200% !important;
+    overflow-x: hidden;
+    margin: 0;
+    animation: background-pan 5s linear infinite;
+    background: linear-gradient(
+        to right,
+        var(--g2),
+        var(--g1),
+        var(--g2)
+    );
+}
+
+.underlay {
+    min-height: calc(100vh - 1px);
+    width: calc(100vw - 1px);
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    grid-template-rows: repeat(var(--rows), 1fr);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.tile {
+    background-color: rgb(15, 15, 15);
+    position: relative;
+    margin: 0.5px;
 }
 
 .banner {
+    background-color: rgb(var(--background-rgb) / 95%);
     display: flex;
     flex-direction: row;
     justify-content: center;
+    padding: 1.5rem;
+    margin-bottom: .5rem;
 }
 
 .card-banner {
@@ -24,7 +65,15 @@ body {
     font-weight: 600;
 }
 
+.character-banner-container {
+    z-index: 1;
+    width: auto;
+    height: auto;
+}
+
 .screens {
+    padding: 2rem;
+    background-color: rgb(var(--background-rgb)  / 95%);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     column-gap: 20px;
@@ -65,12 +114,13 @@ body {
 
     .screen {
         margin-bottom: 20px;
+        margin: 0px auto 1rem auto;
     }
 }
 
 @media only screen and (max-width: 660px)  {
     .card-banner {
-        font-size: 3.50rem;
+        font-size: 3.25rem;
         font-weight: 600;
     }
 }
@@ -85,7 +135,7 @@ body {
     aspect-ratio: 10 / 16;
     border-radius: 1rem;
     background-color: rgb(var(--primary-rgb) / 15%);
-    transition: width .3s;
+    transition: aspect-ratio .3s;
 }
 
 #infoBar {
@@ -100,8 +150,8 @@ body {
 }
 
 .screen:hover {
-    width: 320px;
-    transition: width .3s;
+    aspect-ratio: 10 / 17;
+    transition: aspect-ratio .3s;
 }
 
 .screen-text {
@@ -150,7 +200,7 @@ body {
     position: absolute;
     height: 100%;
     width: 100%;
-    background-size: 150%;
+    background-size: 170%;
     filter: sepia(10%) hue-rotate(120deg);
     animation: pan-image 20s infinite linear;
     opacity: 0.6;
@@ -188,29 +238,29 @@ body {
 
     0% {
         background-position: 0% 0%;
-        background-size: 150%;
+        background-size: 170%;
         filter: sepia(10%) hue-rotate(0deg);
     }
 
     25% {
         background-position: 100% 20%;
-        background-size: 140%;
+        background-size: 160%;
     }
 
     50% {
         background-position: 0% 100%;
-        background-size: 145%;
+        background-size: 150%;
         filter: sepia(10%) hue-rotate(180deg);
     }
 
     75% {
         background-position: 100% 100%;
-        background-size: 142%;
+        background-size: 160%;
     }
 
     100% {
         background-position: 0% 0%;
-        background-size: 150%;
+        background-size: 170%;
         filter: sepia(10%) hue-rotate(360deg);
     }
 }
