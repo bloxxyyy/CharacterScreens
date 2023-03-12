@@ -8,13 +8,21 @@ const createTile = index => {
   
 const createNav1 = tile => {
     tile.classList.add("tile");
-    tile.classList.add("characterCardNav");
+    const tileImage = document.createElement("div");
+    tileImage.classList.add("characterCardNav");
+    tileImage.classList.add("navItem");
+    tile.classList.add("cardNav");
+    tile.appendChild(tileImage);
     return tile;
 }
 
 const createNav2 = tile => {
     tile.classList.add("tile");
-    tile.classList.add("itemsCardNav");
+    const tileImage = document.createElement("div");
+    tileImage.classList.add("itemsCardNav");
+    tileImage.classList.add("navItem");
+    tile.classList.add("cardNav");
+    tile.appendChild(tileImage);
     return tile;
 }
 
