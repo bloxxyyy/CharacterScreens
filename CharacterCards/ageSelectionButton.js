@@ -6,7 +6,11 @@ ageButton.addEventListener('click', function() {
     });
     if (!isAscendingAge) {
         json["characters"].reverse();
+        buildPopup("Sorted by Age: Asending");
+    } else {
+        buildPopup("Sorted by Age: Decending");
     }
+
     remakeCards();
     isAscendingAge = !isAscendingAge; // toggle sort order
 });

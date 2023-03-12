@@ -1,0 +1,45 @@
+.popupWindow {
+    top: -150px;
+    position: absolute;
+    justify-self: center;
+    padding: 1.5rem 0;
+    margin: 1.5rem;
+    min-width: 50vw;
+    background-color: rgb(10, 10, 10);
+    display: flex;
+    justify-content: center;
+    z-index: 99999;
+    border-radius: 1rem;
+    border: 1px solid;
+    border-color: #136131;
+    animation:jump-in-popup 5s ease-in-out;
+}
+
+.popupTextSpan {
+    font-size: 3.25rem;
+    color: white;
+    font-weight: 500;
+}
+
+@keyframes jump-in-popup {
+    0% {
+        top: -150px;
+    }
+    5% {
+        top: 0px;
+    }
+    60% {
+        opacity: 1;
+        top: 0px;
+    }
+
+    95% {
+        top: 0px;
+        opacity: .2;
+    }
+
+    100% {
+        opacity: 0;
+        top: -150px;
+    }
+}

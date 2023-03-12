@@ -6,6 +6,9 @@ nameButton.addEventListener('click', function() {
     });
     if (!isAscendingName) {
         json["characters"].reverse();
+        buildPopup("Sorted by Name: Asending");
+    } else {
+        buildPopup("Sorted by Name: Decending");
     }
     remakeCards();
     isAscendingName = !isAscendingName; // toggle sort order
