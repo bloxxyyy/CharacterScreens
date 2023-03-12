@@ -1,4 +1,4 @@
-const data = '{"characters": [{"Id": "char1","Name": "Marie","Age": "28","Image": "screen1"},{"Id": "char2","Name": "Altair","Age": "32","Image": "screen2"},{"Id": "char3","Name": "Yui","Age": "23","Image": "screen3"},{"Id": "char4","Name": "Lucifer","Age": "∞","Image": "screen4"}]}';
+const data = '{"characters": [{"Id": "char1","Name": "Marie","Age": "28","Image": "screen1"},{"Id": "char2","Name": "Altair","Age": "32","Image": "screen2"},{"Id": "char3","Name": "Yui","Age": "23","Image": "screen3"},{"Id": "char4","Name": "Lucifer","Age": "9999999","Image": "screen4"}]}';
 var json = JSON.parse(data);
 
 function remakeCards() {
