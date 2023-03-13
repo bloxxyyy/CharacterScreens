@@ -71,7 +71,11 @@ const createGrid = () => {
 
 createGrid();
 
-window.onresize = () => createGrid();
+window.onresize = () => {
+     createGrid();
+     updateScreenSizeInfoBox();
+}
+
 window.onload = function(){
     createGrid();
 }

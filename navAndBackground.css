@@ -1,7 +1,6 @@
 body {   
     min-height: 100vh;
     display: grid;
-    align-items: center;
     background-size: 200% !important;
     overflow-x: hidden;
     margin: 0;

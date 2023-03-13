@@ -14,22 +14,26 @@ function displayAllElements(el) {
     });
 }
 
+const cs = document.getElementById("characterScreens");
+let checkResize = false;
+
 function toggleShowCharacterInfo(screen) {
     var element = document.getElementsByClassName("activeSpot")[0];
     element.classList.remove('activeSpot');
     screen.classList.add('activeSpot');
 
-    const cs = document.getElementById("characterScreens");
-
     if (infoBarHidden) {
+        checkResize = true;
         setInfo(screen);
         hideButtons();
         infoBar.style.setProperty("display", "table");
-        cs.style.setProperty("grid-template-columns", "repeat(auto-fit, minmax(180px, auto), minmax(180px, auto))");
+        cs.style.setProperty("grid-template-columns", "minmax(240px, 1fr) 2fr");
         hideOtherElements(screen);
+        updateScreenSizeInfoBox();
         createGrid();
     } else {
-        cs.style.setProperty("grid-template-columns", "repeat(auto-fit, minmax(180px, auto))");
+        checkResize = false;
+        cs.style.setProperty("grid-template-columns", "repeat(auto-fill, minmax(240px, auto))");
         infoBar.style.setProperty("display", "none");
         screen.classList.remove('activeSpot');
         firstElement.classList.add('activeSpot');
@@ -39,6 +43,16 @@ function toggleShowCharacterInfo(screen) {
     }
 
     infoBarHidden = !infoBarHidden;
+}
+
+function updateScreenSizeInfoBox() {
+    if (checkResize) {
+        if (cs.clientWidth <= 700) {
+            cs.style.setProperty("grid-template-columns", "minmax(240px, 1fr)");
+        } else {
+            cs.style.setProperty("grid-template-columns", "minmax(240px, 1fr) 2fr");
+        }
+    }
 }
 
 function setInfo(el) {
