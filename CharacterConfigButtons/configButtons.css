@@ -1,0 +1,30 @@
+.character-buttons-container {
+    display: flex;
+    position: absolute;
+}
+
+.character-buttons {
+    margin: .5rem;
+    padding: 1rem;
+    background-color: black;
+    border-radius: 50%;
+    border: 1px solid;
+    border-color: #136131;
+    transition: all .2s ease-in-out;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#button-age-order {
+    background-image: url("../img/HandDrawnIcons/Realistic/stuff/Gravestone3.png");
+}
+
+#button-name-order {
+    background-image: url("../img/HandDrawnIcons/Realistic/elements/DottedLine1.png");
+}
+
+.character-buttons:hover {
+    margin: .6rem;
+    padding: .9rem;
+}

@@ -16,7 +16,8 @@
 }
 
 .popupTextSpan {
-    font-size: 3.25rem;
+    padding: 0 2rem;
+    font-size: 4vw;
     color: white;
     font-weight: 500;
 }

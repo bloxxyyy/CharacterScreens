@@ -16,17 +16,20 @@ function displayAllElements(el) {
 
 function toggleShowCharacterInfo(screen) {
     var element = document.getElementsByClassName("activeSpot")[0];
-
     element.classList.remove('activeSpot');
     screen.classList.add('activeSpot');
+
+    const cs = document.getElementById("characterScreens");
 
     if (infoBarHidden) {
         setInfo(screen);
         hideButtons();
         infoBar.style.setProperty("display", "table");
+        cs.style.setProperty("grid-template-columns", "repeat(auto-fit, minmax(180px, auto), minmax(180px, auto))");
         hideOtherElements(screen);
         createGrid();
     } else {
+        cs.style.setProperty("grid-template-columns", "repeat(auto-fit, minmax(180px, auto))");
         infoBar.style.setProperty("display", "none");
         screen.classList.remove('activeSpot');
         firstElement.classList.add('activeSpot');
