@@ -1,71 +1,79 @@
-const buttonData = '{"buttons":[["name", true], ["age", true]]}';
-var buttonJson = JSON.parse(buttonData);
-var buttonElements = [];
-
-function createConfigButtons() {
-    for (let item in buttonJson) {
-        for (let data in buttonJson[item]) {
-            buildConfigButton(buttonJson[item][data]);
-        }
+class Button {
+    constructor(name, sortBy, json) {
+      this.name = name;
+      this.json = json;
+      this.order = sortBy;
+      this.element = this.buildButtonElement();
+      this.addClickListener();
     }
-}
-
-function buildConfigButton(jsonItem) {
-    
-    var configButtonsContainer = document.getElementsByClassName("character-buttons-container")[0]
-    var div = document.createElement("div");
-    div.setAttribute('class', 'character-buttons');
-    div.setAttribute('id', 'button-'+jsonItem[0]+'-order');
-
-    if (jsonItem[0] === "age") {
-        var ev = function() {
-            json["characters"].sort(function(a, b) {
-                return a.Age - b.Age;
-            });
-            if (!jsonItem[1]) {
-                json["characters"].reverse();
-                buildPopup("Sorted by Age: Asending");
-            } else {
-                buildPopup("Sorted by Age: Decending");
-            }
-        
-            remakeCards();
-            jsonItem[1] = !jsonItem[1]; // toggle sort order        
-        };
+  
+    buildButtonElement() {
+      const container = document.createElement("div");
+      container.classList.add("character-buttons");
+      container.id = `button-${this.name}-order`;
+  
+      return container;
     }
-
-    if (jsonItem[0] === "name") {
-        var ev = function() {
-            json["characters"].sort(function(a, b) {
+  
+    addClickListener() {
+      this.element.addEventListener("click", () => {
+        this.toggleOrder();
+        this.sortJson();
+        var order = this.order ? "Descending" : "Ascending";
+        buildPopup("Sorted by " + this.name + ": " + order);
+        remakeCards();
+      });
+    }
+  
+    toggleOrder() {
+      this.order = !this.order;
+    }
+  
+    sortJson() {
+        this.json.characters.sort((a, b) => {
+            if (this.name === "name") {
                 return a.Name.localeCompare(b.Name);
-            });
-            if (!jsonItem[1]) {
-                json["characters"].reverse();
-                buildPopup("Sorted by Name: Asending");
-            } else {
-                buildPopup("Sorted by Name: Decending");
+            } else if (this.name === "age") {
+                return a.Age - b.Age;
+            } else if (this.name === "gender") {
+                return a.Gender.localeCompare(b.Gender);
+            } else if (this.name === "status") {
+                return a.Status.localeCompare(b.Status);
             }
-            remakeCards();
-            jsonItem[1] = !jsonItem[1]; // toggle sort order
+        });
+
+        if (!this.order) {
+            this.json.characters.reverse();
         }
     }
+  
+    hide() {
+      this.element.style.display = "none";
+    }
+  
+    show() {
+      this.element.style.display = "block";
+    }
+  }
 
+const container = document.querySelector(".character-buttons-container");
+const buttonJson = JSON.parse('{"buttons":[["name", true], ["age", true], ["gender", true], ["status", true]]}');
+const buttons = [];
 
-    div.addEventListener('click', ev);  
-    buttonElements.push(div);
-    configButtonsContainer.appendChild(div);
-}
+buttonJson.buttons.forEach(([name, sortBy]) => {
+    const button = new Button(name, sortBy, json);
+    container.appendChild(button.element);
+    buttons.push(button);
+});
 
 function hideButtons() {
-    for (let item in buttonElements) {
-        buttonElements[item].style.setProperty("display", "none");
-    }
+    buttons.forEach(button => {
+      button.hide();
+    });
 }
 
 function displayButtons() {
-    for (let item in buttonElements) {
-        buttonElements[item].style.setProperty("display", "block");
-    }
-}
-
-createConfigButtons(); // initial setup
+    buttons.forEach(button => {
+      button.show();
+    });
+  }
