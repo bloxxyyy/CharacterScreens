@@ -8,11 +8,11 @@
         <link rel="stylesheet" href="popup/popup.css">
         <script defer src="CharacterCards/cardBuilder.js"></script>
         <script defer src="CharacterCards/toggleShowCharacterInfo.js"></script>
-        <script defer src="CharacterCards/ageSelectionButton.js"></script>
-        <script defer src="CharacterCards/nameSelectionButton.js"></script>
+        <script defer src="CharacterConfigButtons/configButtonsBuilder.js"></script>
         <script defer src="underlay.js"></script>
         <script defer src="mouseClick.js"></script>
         <script defer src="popup/popup.js"></script>
+        <script defer src="infoBarAnimation.js"></script>
     </head>
     <body>
 
@@ -27,22 +27,31 @@
             </div>
 
             <div class="character-banner-container">
-                <div class="character-buttons-container">
-                    <div id="button-name-order" class="character-buttons"></div>
-                    <div id="button-age-order" class="character-buttons"></div>
-                </div>
+                <div class="character-buttons-container"></div>
                 <div class="banner">
                     <span class="card-banner"> Character Cards</span>
                 </div>
 
                 <div class="screens" id="characterScreens">
-                    <div id="infoBar">
-                        <label>Name:</span>
-                        <span class="name" id="NameField"></span>
-                        <br>
-                        <label>Age:</span>
-                        <span class="name" id="AgeField"></span>
-                    </div>
+
+                    <table id="infoBar">
+                        <tr>
+                          <td align="left">First Name</td>
+                          <td align="left" data-value="" class="name" id="NameField"></td>
+                        </tr>
+                        <tr>
+                          <td align="left">Age</td>
+                          <td align="left" data-value="" class="name" id="AgeField"></td>
+                        </tr>
+                        <tr>
+                            <td align="left">Gender</td>
+                            <td align="left" data-value="" class="name" id="GenderField"></td>
+                        </tr>
+                        <tr>
+                            <td align="left">Status</td>
+                            <td align="left" data-value="" class="name" id="StatusField"></td>
+                          </tr>
+                    </table>
                 </div>     
             </div>
         </div>

@@ -22,13 +22,15 @@ function toggleShowCharacterInfo(screen) {
 
     if (infoBarHidden) {
         setInfo(screen);
-        infoBar.style.setProperty("display", "block");
+        hideButtons();
+        infoBar.style.setProperty("display", "table");
         hideOtherElements(screen);
         createGrid();
     } else {
         infoBar.style.setProperty("display", "none");
         screen.classList.remove('activeSpot');
         firstElement.classList.add('activeSpot');
+        displayButtons();
         displayAllElements();
         createGrid();
     }
@@ -45,6 +47,14 @@ function setInfo(el) {
                 namefield.innerHTML = json[item][e]['Name']
                 var agefield = document.getElementById("AgeField");
                 agefield.innerHTML = json[item][e]['Age']
+                var genderField = document.getElementById("GenderField");
+                genderField.innerHTML = json[item][e]['Gender']
+                var statusField = document.getElementById("StatusField");
+                statusField.innerHTML = json[item][e]['Status']
+                onLoadInfoBarData(namefield);
+                onLoadInfoBarData(agefield);
+                onLoadInfoBarData(genderField);
+                onLoadInfoBarData(statusField);
             }
         }
     }

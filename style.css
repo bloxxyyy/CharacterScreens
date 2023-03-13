@@ -7,6 +7,27 @@
     --g2: rgb(15 100 25);
 }
 
+* {
+    font-family: "Space Mono", monospace;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td {
+    padding-left: .25rem;
+}
+
+tr:first-child {
+    border-top:2px dashed #136131;
+}
+
+tr {
+    border-bottom:2px dashed #136131;
+}
+
 @keyframes background-pan {
     from {
       background-position: 0% center;
